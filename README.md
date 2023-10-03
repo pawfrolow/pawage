@@ -1,4 +1,4 @@
-# Pet age calculator
+# PawAge
 
 ```bash
 npm run dev
