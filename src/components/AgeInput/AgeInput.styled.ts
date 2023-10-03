@@ -12,4 +12,5 @@ export const AgeInputField = styled.input`
   padding: 0px 16px;
   border-radius: 16px;
   font-size: 18px;
+  text-align: center;
 `

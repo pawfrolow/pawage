@@ -21,6 +21,8 @@ export const AgeInput: React.FC<TAgeInputProps> = ({ maxAge, onChange }) => {
     }
   }
 
+  console.log(maxAge)
+
   return (
     <s.AgeInputWrapper>
       <s.AgeInputField
@@ -29,7 +31,7 @@ export const AgeInput: React.FC<TAgeInputProps> = ({ maxAge, onChange }) => {
         max={maxAge}
         value={age}
         onKeyDown={onKeyDown}
-        onChange={({ target }) => setAge(target.value)}
+        onChange={({ target }) => +target.value < maxAge && setAge(target.value)}
       />
     </s.AgeInputWrapper>
   )
