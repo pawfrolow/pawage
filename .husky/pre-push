@@ -2,17 +2,17 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Allows us to read user input below, assigns stdin to keyboard
-exec < /dev/tty
+exec < /dev/tty && npx version-select
 
-while true; do
-  read -p "[pre-push hook] Please enter which version needs to update? (patch/minor/major) " yn
-  if [ "$yn" = "" ]; then
-    yn='patch'
-  fi
-  case $yn in
-      "patch" ) npm version patch; break;;
-      "minor" ) npm version minor; break;;
-      "major" ) npm version major; break;;
-      * ) echo "Please answer patch/minor/major";;
-  esac
-done
+#while true; do
+#  read -p "[pre-push hook] Please enter which version needs to update? (patch/minor/major) " yn
+#  if [ "$yn" = "" ]; then
+#    yn='patch'
+#  fi
+#  case $yn in
+#      "patch" ) npm version patch; break;;
+#      "minor" ) npm version minor; break;;
+#      "major" ) npm version major; break;;
+#      * ) echo "Please answer patch/minor/major";;
+#  esac
+#done
