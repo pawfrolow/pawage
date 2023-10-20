@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "version-select": "version-select"
+    "version-select": "version-select",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "20.6.0",
@@ -40,7 +41,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "version-select"
+      "pre-commit": "npx version-select"
     }
   }
 }
