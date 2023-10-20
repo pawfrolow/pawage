@@ -35,6 +35,7 @@ export const CalendarWrapper = styled.section`
     .react-calendar__navigation {
       border-radius: 16px;
       button {
+        color: ${({ theme }) => theme.colors.dark};
         font-size: 18px;
         background-color: ${({ theme }) => theme.colors.blackTransparent}
       }
@@ -50,6 +51,10 @@ export const CalendarWrapper = styled.section`
         border-top-right-radius: 16px;
         border-bottom-right-radius: 16px;
       }
+    }
+
+    .react-calendar__tile:not(.react-calendar__month-view__days__day--weekend):not(.react-calendar__month-view__days__day--neighboringMonth) {
+      color: ${({ theme }) => theme.colors.dark};
     }
 
     .react-calendar__tile:enabled:hover {
