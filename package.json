@@ -36,8 +36,7 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "husky": "^8.0.3",
-    "version-select": "^1.0.13"
+    "husky": "^8.0.3"
   },
   "husky": {
     "hooks": {
