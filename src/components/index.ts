@@ -12,3 +12,5 @@ export { AgeInput } from "./AgeInput/AgeInput";
 export { AgeView } from './AgeView/AgeView'
 export { AgeCard } from './AgeCard/AgeCard'
 export { BackButton } from './BackButton/BackButton'
+export { Footer } from './Footer/Footer'
+export { Main } from './Main/Main'

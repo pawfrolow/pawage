@@ -6,7 +6,7 @@ import { useInterval } from '@/hooks'
 import * as s from './AgeView.styled'
 import { num2str, unitToSeconds } from '@/utils'
 import { units } from '@/data/common'
-import { Entries, TUnintsObject, TUnits } from '@/types/common.types'
+import { TUnits } from '@/types/common.types'
 import config from '@/config/config'
 
 type TAgeViewProps = {

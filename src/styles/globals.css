@@ -2,6 +2,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    height: 100vh;
 }
 
 h1,
@@ -21,4 +22,8 @@ p {
 
 html {
   scroll-behavior: smooth;
+}
+
+#__next {
+  height: 100vh;
 }

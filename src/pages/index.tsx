@@ -1,4 +1,4 @@
-import { AgeSelector, AgeView, BackButton, Header, PetSelector, Question } from '@/components'
+import { AgeSelector, AgeView, BackButton, Footer, Header, Main, PetSelector, Question } from '@/components'
 import { TPetType } from '@/types/pet.types'
 import { IUserAnswer } from '@/types/question.types';
 import { animation, getQuestionsByType } from '@/utils';
@@ -82,10 +82,11 @@ const Home = () => {
   return (
     <>
       <Header />
-      <motion.main key={key()} {...animation.switchFadeWithSlide()}>
+      <Main key={key()} {...animation.switchFadeWithSlide()}>
         {selectedPet && <BackButton onClick={back} isLastStage={!!birthDate} />}
         {renderQuestions()}
-      </motion.main>
+      </Main>
+      <Footer />
     </>
   )
 }
