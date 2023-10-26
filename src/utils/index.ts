@@ -16,6 +16,10 @@ export const checkAnswer = (answers: IUserAnswer[], questionType: TQuestionType,
   return answers.find(answer => answer.question === questionType)?.answer === answer
 }
 
+export const getAnswer = (answers: IUserAnswer[], questionType: TQuestionType) => {
+  return answers.find(answer => answer.question === questionType)?.answer
+}
+
 export const dateToUnitFromNow = (date: Date, unit: UnitTypeLong) => Math.abs(dayjs(date).diff(config.currentDate, unit))
 
 export const unitToSeconds = (date: number, unit: TUnits) => {

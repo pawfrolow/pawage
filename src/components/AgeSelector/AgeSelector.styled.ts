@@ -11,6 +11,7 @@ export const SubmitButton = styled.button`
   font-family: inherit;
   transition: opacity 0.3s ease;
   cursor: pointer;
+  font-size: 18px;
 
   &:disabled {
     opacity: 0.6;

@@ -72,6 +72,7 @@ const Home = () => {
       if (birthDate) {
         return <AgeView
           birthDate={birthDate}
+          userAnswers={userAnswers}
         />
       }
     }

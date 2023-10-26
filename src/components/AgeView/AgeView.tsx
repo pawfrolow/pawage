@@ -4,20 +4,23 @@ import { useTranslation } from 'next-i18next'
 import { catCalculate } from '@/utils/calculate'
 import { useInterval } from '@/hooks'
 import * as s from './AgeView.styled'
-import { num2str, unitToSeconds } from '@/utils'
+import { getAnswer, num2str, unitToSeconds } from '@/utils'
 import { units } from '@/data/common'
 import { TUnits } from '@/types/common.types'
 import config from '@/config/config'
+import { EQuestionTypes, IUserAnswer } from '@/types/question.types'
 
 type TAgeViewProps = {
-  birthDate: Date
+  birthDate: Date,
+  userAnswers: IUserAnswer[]
 }
 
-export const AgeView: React.FC<TAgeViewProps> = ({ birthDate }) => {
+export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers }) => {
   const { speed, age: calculatedAge } = useMemo(() => catCalculate(birthDate), [birthDate])
   const [age, setAge] = useState(calculatedAge);
 
   const { t } = useTranslation();
+  const petName = getAnswer(userAnswers, EQuestionTypes.petName)
 
   useInterval(() => {
     setAge(prev => prev + 1)
@@ -49,7 +52,7 @@ export const AgeView: React.FC<TAgeViewProps> = ({ birthDate }) => {
 
   return (
     <Block>
-      <BlockTitle>{t('AgeView.Title')}</BlockTitle>
+      <BlockTitle>{`${t('AgeView.Title.start')} ${petName ?? ''}${t('AgeView.Title')}`}</BlockTitle>
       <s.AgeRow>
         {units.map((unit) => <AgeCard
           key={unit}

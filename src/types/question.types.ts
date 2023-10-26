@@ -2,13 +2,21 @@ export interface IQuestion {
   title: string,
   description?: string,
   type: TQuestionType,
-  answers: IAnswer[]
+  answers?: IAnswer[],
+  input?: IInput
+}
+
+export interface IInput {
+  placeholder: string,
+  type?: string,
+  allowEmpty?: boolean
 }
 
 export type TQuestionType = `${EQuestionTypes}`
 
 export enum EQuestionTypes {
-  birthDateKnown = 'birthDateKnown'
+  birthDateKnown = 'birthDateKnown',
+  petName = 'petName'
 }
 
 export interface IAnswer {
