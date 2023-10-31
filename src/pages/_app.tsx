@@ -21,15 +21,15 @@ class MyApp extends App {
             rel="stylesheet"
           />
 
-          <meta name="description" content="An easy calculator for converting a pet's age to human age. Quickly and accurately calculate your furry friend's age based on his age data. Find out how old your dog or cat is in human age. Just enter the data and get the result!" />
+          <meta name="description" content="An easy calculator for converting a pet's age to human age" />
 
           <meta httpEquiv="content-language" content="en" />
           <meta name="title" content="PawAge | Pet Age Calculator" />
-          <meta name="description" content="An easy calculator for converting a pet's age to human age. Quickly and accurately calculate your furry friend's age based on his age data. Find out how old your dog or cat is in human age. Just enter the data and get the result!" />
+          <meta name="description" content="An easy calculator for converting a pet's age to human age" />
 
           <meta httpEquiv="content-language" content="ru" />
           <meta name="title" content="PawAge | Возраст питомца" />
-          <meta name="description" content="Легкий калькулятор для перевода возраста питомца в человеческий. Быстрый и точный расчет возраста вашего пушистого друга на основе данных о его возрасте. Узнайте, сколько лет в человеческом возрасте вашей собаке или кошке. Просто введите данные и получите результат!" />
+          <meta name="description" content="Легкий калькулятор для перевода возраста питомца в человеческий" />
 
           <title>PawAge</title>
         </Head>
