@@ -4,21 +4,22 @@ import 'react-calendar/dist/Calendar.css';
 import * as s from './AgeSelector.styled'
 import { AgeInput, Block, BlockTitle } from '..';
 import { EQuestionTypes, IUserAnswer } from '@/types/question.types';
-import { TPetType } from '@/types/pet.types';
+import { TPetToHuman, TPetType } from '@/types/pet.types';
 import { checkAnswer } from '@/utils';
 import { useTranslation } from 'next-i18next';
 import { pets } from '@/data/pets';
 import { useRouter } from 'next/router';
 import config from '@/config/config';
-import { catYearsToHuman } from '@/data/cat';
+import { catYearsToHuman } from '@/data/convertTables';
 
 type TAgeSelector = {
   answers: IUserAnswer[],
   petType: TPetType,
-  onSelect: (date: Date) => void
+  onSelect: (date: Date) => void,
+  petToHuman: TPetToHuman[]
 }
 
-export const AgeSelector: React.FC<TAgeSelector> = ({ answers, petType, onSelect }) => {
+export const AgeSelector: React.FC<TAgeSelector> = ({ answers, petType, onSelect, petToHuman }) => {
   const { locale } = useRouter()
   const [birthDate, setBirthDate] = useState<Date | undefined>()
   const { t } = useTranslation();
@@ -34,8 +35,8 @@ export const AgeSelector: React.FC<TAgeSelector> = ({ answers, petType, onSelect
             <Calendar
               onChange={(value) => value instanceof Date && setBirthDate(value)}
               locale={locale}
-              maxDate={config.currentDate.toDate()/* .subtract(1, 'month').toDate() */}
-              minDate={config.currentDate.subtract(catYearsToHuman[catYearsToHuman.length - 1].pet, 'year').toDate()}
+              maxDate={config.currentDate.toDate()}
+              minDate={config.currentDate.subtract(petToHuman[petToHuman.length - 1].pet, 'year').toDate()}
             />
           </s.CalendarWrapper>
         </>

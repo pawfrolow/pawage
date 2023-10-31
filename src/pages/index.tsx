@@ -6,8 +6,7 @@ import React, { useState } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
-import { catYearsToHuman } from '@/data/cat';
-import { dogYearsToHuman } from '@/data/dog';
+import { catYearsToHuman, dogYearsToHuman, hamsterYearsToHuman } from '@/data/convertTables';
 
 dayjs.extend(duration);
 
@@ -66,6 +65,7 @@ const Home = () => {
         const selectedDog = (userAnswers.find(elem => elem.question === EQuestionTypes.dogSize)?.answer ?? '1') as TDogKeys
         return dogYearsToHuman[selectedDog]
       }
+      case 'hamster': return hamsterYearsToHuman
       default: return []
     }
   }
@@ -78,6 +78,7 @@ const Home = () => {
           answers={userAnswers}
           petType={selectedPet}
           onSelect={setBirthDate}
+          petToHuman={getPetToHuman()}
         />
       }
 

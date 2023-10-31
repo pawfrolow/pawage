@@ -17,7 +17,6 @@ export const pets: TPet = {
     type: EPetType.hamster,
     title: 'pets.hamster',
     icon: 'hamster.png',
-    inDev: true,
     maxAge: 5,
   }
 }

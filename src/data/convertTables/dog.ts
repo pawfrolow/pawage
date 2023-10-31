@@ -1,5 +1,5 @@
 import { EPetType, TDogKeys, TPetToHuman } from "@/types/pet.types";
-import { pets } from "./pets";
+import { pets } from "../pets";
 
 const firstThree: TPetToHuman[] = [
   { pet: +(1 / 12).toFixed(3), human: 1 },

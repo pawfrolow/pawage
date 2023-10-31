@@ -47,3 +47,7 @@ export const dogQuestions: IQuestion[] = [
   },
   ...commonQuestions.filter((_, idx) => idx > 0),
 ]
+
+export const hamsterQuestions: IQuestion[] = [
+  ...commonQuestions
+]

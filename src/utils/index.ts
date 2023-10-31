@@ -1,5 +1,5 @@
 import dayjs, { UnitTypeLong } from "dayjs";
-import { catQuestions, dogQuestions } from "@/data/questions";
+import { catQuestions, dogQuestions, hamsterQuestions } from "@/data/questions";
 import { EPetType, TPetType } from "@/types/pet.types";
 import { IUserAnswer, TQuestionType } from "@/types/question.types";
 import { TUnits } from "@/types/common.types";
@@ -10,6 +10,7 @@ export * as animation from './animation';
 export const getQuestionsByType = (type: TPetType | null) => {
   if (type === EPetType.cat) return catQuestions;
   if (type === EPetType.dog) return dogQuestions;
+  if (type === EPetType.hamster) return hamsterQuestions;
   return []
 }
 

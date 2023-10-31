@@ -1,5 +1,5 @@
 import { EPetType, TPetToHuman } from "@/types/pet.types";
-import { pets } from "./pets";
+import { pets } from "../pets";
 
 export const catYearsToHuman: TPetToHuman[] = [
   { pet: +(1 / 12).toFixed(3), human: 1 },
