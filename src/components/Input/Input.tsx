@@ -50,7 +50,7 @@ export const Input: FC<IInputProps> = ({ input, onConfirm }) => {
       </s.InputFieldWrapper>
       <Answer
         answer={{
-          title: 'questions.answers.confirm',
+          title: 'questions.common.answers.confirm',
           value: 'confirm'
         }}
         onClick={handleConfirm}
