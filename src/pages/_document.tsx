@@ -1,6 +1,5 @@
 import Document, { DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

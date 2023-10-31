@@ -6,6 +6,8 @@ import { TUnits } from "@/types/common.types";
 import config from "@/config/config";
 
 export * as animation from './animation';
+export { calculate } from './calculate'
+export { share } from './share'
 
 export const getQuestionsByType = (type: TPetType | null) => {
   if (type === EPetType.cat) return catQuestions;

@@ -21,8 +21,6 @@ export const AgeInput: React.FC<TAgeInputProps> = ({ maxAge, onChange }) => {
     }
   }
 
-  console.log(maxAge)
-
   return (
     <s.AgeInputWrapper>
       <s.AgeInputField
