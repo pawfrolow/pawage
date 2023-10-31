@@ -1,12 +1,12 @@
 import { EQuestionTypes, IAnswer, IQuestion } from "@/types/question.types";
 
 export const YesAnswer: IAnswer = {
-  title: 'questions.answers.yes',
+  title: 'questions.common.answers.yes',
   value: 'yes'
 }
 
 export const NoAnswer: IAnswer = {
-  title: 'questions.answers.no',
+  title: 'questions.common.answers.no',
   value: 'no'
 }
 
@@ -14,16 +14,16 @@ export const YesNoAnswers: IAnswer[] = [YesAnswer, NoAnswer]
 
 export const commonQuestions: IQuestion[] = [
   {
-    title: 'questions.petName',
+    title: 'questions.petName.title',
     description: '',
     type: EQuestionTypes.petName,
     input: {
-      placeholder: 'questions.placeholder.petName',
+      placeholder: 'questions.petName.placeholder',
       allowEmpty: true
     }
   },
   {
-    title: 'questions.petAgeKnown',
+    title: 'questions.petAgeKnown.title',
     description: '',
     type: EQuestionTypes.birthDateKnown,
     answers: YesNoAnswers
@@ -32,4 +32,18 @@ export const commonQuestions: IQuestion[] = [
 
 export const catQuestions: IQuestion[] = [
   ...commonQuestions
+]
+
+export const dogQuestions: IQuestion[] = [
+  commonQuestions[0],
+  {
+    title: 'questions.dogSize.title',
+    description: '',
+    type: EQuestionTypes.dogSize,
+    answers: [1, 2, 3, 4].map((number) => ({
+      title: `questions.dogSize.answers.${number}`,
+      value: `${number}`
+    }))
+  },
+  ...commonQuestions.filter((_, idx) => idx > 0),
 ]

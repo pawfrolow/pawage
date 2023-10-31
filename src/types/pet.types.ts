@@ -1,6 +1,7 @@
 export enum EPetType {
   cat = 'cat',
-  dog = 'dog'
+  dog = 'dog',
+  hamster = 'hamster'
 }
 
 export type TPetType = `${EPetType}`
@@ -19,3 +20,5 @@ export type TPetToHuman = {
   pet: number,
   human: number
 }
+
+export type TDogKeys = '1' | '2' | '3' | '4'

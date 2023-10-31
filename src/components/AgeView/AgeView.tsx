@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useState } from 'react'
 import { AgeCard, Block, BlockTitle } from '..'
 import { useTranslation } from 'next-i18next'
-import { catCalculate } from '@/utils/calculate'
+import { calculate } from '@/utils/calculate'
 import { useInterval } from '@/hooks'
 import * as s from './AgeView.styled'
 import { getAnswer, num2str, unitToSeconds } from '@/utils'
@@ -9,14 +9,16 @@ import { units } from '@/data/common'
 import { TUnits } from '@/types/common.types'
 import config from '@/config/config'
 import { EQuestionTypes, IUserAnswer } from '@/types/question.types'
+import { TPetToHuman } from '@/types/pet.types'
 
 type TAgeViewProps = {
   birthDate: Date,
-  userAnswers: IUserAnswer[]
+  userAnswers: IUserAnswer[],
+  petToHuman: TPetToHuman[]
 }
 
-export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers }) => {
-  const { speed, age: calculatedAge } = useMemo(() => catCalculate(birthDate), [birthDate])
+export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers, petToHuman }) => {
+  const { speed, age: calculatedAge } = useMemo(() => calculate(birthDate, petToHuman), [birthDate, petToHuman])
   const [age, setAge] = useState(calculatedAge);
 
   const { t } = useTranslation();

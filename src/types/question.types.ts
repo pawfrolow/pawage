@@ -16,7 +16,8 @@ export type TQuestionType = `${EQuestionTypes}`
 
 export enum EQuestionTypes {
   birthDateKnown = 'birthDateKnown',
-  petName = 'petName'
+  petName = 'petName',
+  dogSize = 'dogSize',
 }
 
 export interface IAnswer {

@@ -1,12 +1,13 @@
 import { AgeSelector, AgeView, BackButton, Footer, Header, Main, PetSelector, Question } from '@/components'
-import { TPetType } from '@/types/pet.types'
-import { IUserAnswer } from '@/types/question.types';
+import { TDogKeys, TPetToHuman, TPetType } from '@/types/pet.types'
+import { EQuestionTypes, IUserAnswer } from '@/types/question.types';
 import { animation, getQuestionsByType } from '@/utils';
-import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
+import { catYearsToHuman } from '@/data/cat';
+import { dogYearsToHuman } from '@/data/dog';
 
 dayjs.extend(duration);
 
@@ -58,6 +59,17 @@ const Home = () => {
     }
   }
 
+  const getPetToHuman = (): TPetToHuman[] => {
+    switch (selectedPet) {
+      case 'cat': return catYearsToHuman
+      case 'dog': {
+        const selectedDog = (userAnswers.find(elem => elem.question === EQuestionTypes.dogSize)?.answer ?? '1') as TDogKeys
+        return dogYearsToHuman[selectedDog]
+      }
+      default: return []
+    }
+  }
+
   const renderQuestions = () => {
     if (!selectedPet) return <PetSelector onClick={(type) => setSelectedPet(type)} />;
     if (isQuestionsPassed) {
@@ -73,6 +85,7 @@ const Home = () => {
         return <AgeView
           birthDate={birthDate}
           userAnswers={userAnswers}
+          petToHuman={getPetToHuman()}
         />
       }
     }

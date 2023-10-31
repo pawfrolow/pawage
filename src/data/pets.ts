@@ -5,13 +5,19 @@ export const pets: TPet = {
     type: EPetType.cat,
     title: 'pets.cat',
     icon: 'cat.png',
-    maxAge: 40,
+    maxAge: 43,
   },
   [EPetType.dog]: {
     type: EPetType.dog,
     title: 'pets.dog',
     icon: 'dog.png',
+    maxAge: 30,
+  },
+  [EPetType.hamster]: {
+    type: EPetType.hamster,
+    title: 'pets.hamster',
+    icon: 'hamster.png',
     inDev: true,
-    maxAge: 40,
+    maxAge: 5,
   }
 }

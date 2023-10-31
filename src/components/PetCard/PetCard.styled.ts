@@ -15,6 +15,7 @@ export const Card = styled(motion.div)`
   justify-content: center;
   position: relative;
   user-select: none;
+  max-width: 120px;
 
   &:hover {
     opacity: 0.8;
@@ -23,11 +24,14 @@ export const Card = styled(motion.div)`
   @media ${device.tablet} {
     width: calc(25vw - 16px);
     height: calc(25vw - 16px - 16px);
+    flex: 1;
+    max-width: unset;
   }
 
   @media ${device.mobile} {
     width: calc(50vw - 16px);
     height: calc(50vw - 16px - 16px);
+    flex: 1;
   }
 
   

@@ -1,4 +1,3 @@
-import { catYearsToHuman } from "@/data/cat";
 import { TPetToHuman } from "@/types/pet.types"
 import { dateToUnitFromNow, unitToSeconds } from ".";
 
@@ -9,12 +8,12 @@ const convertToSeconds = (item: TPetToHuman): TPetToHuman => {
   })
 }
 
-export const catCalculate = (date: Date) => {
+export const calculate = (date: Date, yearsToHuman: TPetToHuman[]) => {
   const petAge = dateToUnitFromNow(date, 'second');
   let age = 0;
-  for (let i = 0; i < catYearsToHuman.length - 1; i++) {
-    const item = convertToSeconds(catYearsToHuman[i])
-    const nextItem = convertToSeconds(catYearsToHuman[i + 1])
+  for (let i = 0; i < yearsToHuman.length - 1; i++) {
+    const item = convertToSeconds(yearsToHuman[i])
+    const nextItem = convertToSeconds(yearsToHuman[i + 1])
     const isUnderFirstIteration = petAge < item.pet && i === 0
     if (isUnderFirstIteration) {
       age = petAge * 12;
@@ -32,7 +31,7 @@ export const catCalculate = (date: Date) => {
   }
 
   const speed = Math.round(
-    catYearsToHuman.reduce((acc, cur) => acc + cur.pet / cur.human * 1000, 0) / catYearsToHuman.length
+    yearsToHuman.reduce((acc, cur) => acc + cur.pet / cur.human * 1000, 0) / yearsToHuman.length
   )
 
   return {

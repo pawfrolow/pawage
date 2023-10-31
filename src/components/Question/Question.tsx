@@ -1,7 +1,7 @@
 import React from 'react'
 import * as s from './Question.styled'
 import { IQuestion, IUserAnswer } from '@/types/question.types'
-import { Answer, Block, BlockTitle, Input } from '..'
+import { Answer, Block, BlockSubtitle, BlockTitle, Input } from '..'
 import { useTranslation } from 'next-i18next'
 
 type TQuestionProps = {
@@ -14,6 +14,7 @@ export const Question: React.FC<TQuestionProps> = ({ question, onSelect }) => {
   return (
     <Block>
       <BlockTitle>{t(question.title)}</BlockTitle>
+      {question.description && <BlockSubtitle>{t(question.description)}</BlockSubtitle>}
       {question?.input && <Input
         input={question.input}
         onConfirm={(answer) => onSelect({ answer, question: question.type })}
