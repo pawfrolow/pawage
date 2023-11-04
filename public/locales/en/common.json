@@ -2,6 +2,7 @@
   "pets.cat": "Cat",
   "pets.dog": "Dog",
   "pets.hamster": "Hamster",
+  "pets.rabbit": "Rabbit",
   "questions.petName.title": "Enter your pet's name (optional)",
   "questions.common.answers.yes": "Yes",
   "questions.common.answers.no": "No",

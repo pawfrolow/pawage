@@ -51,3 +51,7 @@ export const dogQuestions: IQuestion[] = [
 export const hamsterQuestions: IQuestion[] = [
   ...commonQuestions
 ]
+
+export const rabbitQuestions: IQuestion[] = [
+  ...commonQuestions
+]

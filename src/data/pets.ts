@@ -18,5 +18,11 @@ export const pets: TPet = {
     title: 'pets.hamster',
     icon: 'hamster.png',
     maxAge: 5,
+  },
+  [EPetType.rabbit]: {
+    type: EPetType.rabbit,
+    title: 'pets.rabbit',
+    icon: 'rabbit.png',
+    maxAge: 20,
   }
 }

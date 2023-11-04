@@ -20,6 +20,10 @@ p {
   -webkit-tap-highlight-color: transparent;
 }
 
+html, body, #__next {
+  overflow-x: hidden;
+}
+
 html {
   scroll-behavior: smooth;
 }

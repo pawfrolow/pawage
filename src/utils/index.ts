@@ -1,5 +1,5 @@
 import dayjs, { UnitTypeLong } from "dayjs";
-import { catQuestions, dogQuestions, hamsterQuestions } from "@/data/questions";
+import { catQuestions, dogQuestions, hamsterQuestions, rabbitQuestions } from "@/data/questions";
 import { EPetType, TPetType } from "@/types/pet.types";
 import { IUserAnswer, TQuestionType } from "@/types/question.types";
 import { TUnits } from "@/types/common.types";
@@ -10,10 +10,13 @@ export { calculate } from './calculate'
 export { share } from './share'
 
 export const getQuestionsByType = (type: TPetType | null) => {
-  if (type === EPetType.cat) return catQuestions;
-  if (type === EPetType.dog) return dogQuestions;
-  if (type === EPetType.hamster) return hamsterQuestions;
-  return []
+  switch (type) {
+    case EPetType.cat: return catQuestions;
+    case EPetType.dog: return dogQuestions;
+    case EPetType.hamster: return hamsterQuestions;
+    case EPetType.rabbit: return rabbitQuestions;
+    default: return [];
+  }
 }
 
 export const checkAnswer = (answers: IUserAnswer[], questionType: TQuestionType, answer: string) => {

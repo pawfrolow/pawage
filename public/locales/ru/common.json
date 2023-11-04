@@ -2,6 +2,7 @@
   "pets.cat": "Кошка",
   "pets.dog": "Собака",
   "pets.hamster": "Хомяк",
+  "pets.rabbit": "Кролик",
   "questions.petName.title": "Введите кличку вашего питомца (необязательно)",
   "questions.common.answers.yes": "Да",
   "questions.common.answers.no": "Нет",

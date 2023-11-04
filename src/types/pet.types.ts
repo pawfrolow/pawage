@@ -1,7 +1,8 @@
 export enum EPetType {
   cat = 'cat',
   dog = 'dog',
-  hamster = 'hamster'
+  hamster = 'hamster',
+  rabbit = 'rabbit'
 }
 
 export type TPetType = `${EPetType}`
