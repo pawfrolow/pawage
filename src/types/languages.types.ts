@@ -7,6 +7,5 @@ export type TLanguages = `${ELanguages}`
 
 export interface ILanguage {
   value: TLanguages,
-  label: string,
-  icon: string
+  label: string
 }

@@ -8,4 +8,6 @@ export const LanguageSelect = styled(motion.div)`
 export const Option = styled.div`
   display: flex;
   align-items: center;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.dark}
 `

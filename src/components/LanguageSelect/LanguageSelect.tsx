@@ -6,6 +6,7 @@ import { languages } from '@/data/languages';
 import Image from 'next/image';
 import { ILanguage } from '@/types/languages.types';
 import { useRouter } from 'next/router';
+import { theme } from '@/styles';
 
 export const LanguageSelect = () => {
   const router = useRouter()
@@ -23,10 +24,7 @@ export const LanguageSelect = () => {
   }
 
   const renderOption = (item: ILanguage) => <s.Option>
-    <Image
-      src={`/assets/languages/${item.icon}`}
-      alt="icon" width={24} height={24}
-    />
+    {item.value}
   </s.Option>
 
   return (
@@ -37,6 +35,26 @@ export const LanguageSelect = () => {
         onChange={handleChange}
         options={languages}
         formatOptionLabel={renderOption}
+        components={{
+          DropdownIndicator: () => null,
+          IndicatorSeparator: () => null,
+          IndicatorsContainer: () => null
+        }}
+        styles={{
+          option: (baseStyles, state) => ({
+            ...baseStyles,
+            background: state.isSelected ? theme.colors.primary : theme.colors.white
+          }),
+          menu: (baseStyles) => ({
+            ...baseStyles,
+            margin: 0
+          }),
+          menuList: (baseStyles) => ({
+            ...baseStyles,
+            paddingTop: 0,
+            paddingBottom: 0
+          })
+        }}
       /></s.LanguageSelect>
   )
 }
