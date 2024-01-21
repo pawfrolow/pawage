@@ -1,6 +1,4 @@
 import dayjs, { UnitTypeLong } from "dayjs";
-import { catQuestions, dogQuestions, hamsterQuestions, rabbitQuestions } from "@/data/questions";
-import { EPetType, TPetType } from "@/types/pet.types";
 import { IUserAnswer, TQuestionType } from "@/types/question.types";
 import { TUnits } from "@/types/common.types";
 import config from "@/config/config";
@@ -8,16 +6,6 @@ import config from "@/config/config";
 export * as animation from './animation';
 export { calculate } from './calculate'
 export { share } from './share'
-
-export const getQuestionsByType = (type: TPetType | null) => {
-  switch (type) {
-    case EPetType.cat: return catQuestions;
-    case EPetType.dog: return dogQuestions;
-    case EPetType.hamster: return hamsterQuestions;
-    case EPetType.rabbit: return rabbitQuestions;
-    default: return [];
-  }
-}
 
 export const checkAnswer = (answers: IUserAnswer[], questionType: TQuestionType, answer: string) => {
   return answers.find(answer => answer.question === questionType)?.answer === answer
@@ -58,3 +46,7 @@ export const num2str = (n: number, textForms: string[]) => {
   return textForms[2];
 };
 
+export const generateId = (mask = 'xxxxxxxxxx', map = '0123456789abcdef') => {
+  const length = map.length;
+  return mask.replace(/x/g, () => map[Math.floor((Math.random() * length))]);
+}

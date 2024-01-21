@@ -1,12 +1,13 @@
-import { AgeSelector, AgeView, BackButton, Footer, Header, Main, PetSelector, Question } from '@/components'
-import { TDogKeys, TPetToHuman, TPetType } from '@/types/pet.types'
-import { EQuestionTypes, IUserAnswer } from '@/types/question.types';
-import { animation, getQuestionsByType } from '@/utils';
-import React, { useState } from 'react'
+import { AgeSelector, AgeView, BackButton, Footer, Header, Main, Notifications, PetSelector, Question } from '@/components'
+import { TPetType } from '@/types/pet.types'
+import { IUserAnswer } from '@/types/question.types';
+import { animation } from '@/utils';
+import React, { useMemo, useState } from 'react'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
-import { catYearsToHuman, dogYearsToHuman, hamsterYearsToHuman, rabbitYearsToHuman } from '@/data/convertTables';
+import { getPetToHuman } from '@/data/convertTables';
+import { questionsByType } from '@/data/questions';
 
 dayjs.extend(duration);
 
@@ -15,18 +16,20 @@ const Home = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [userAnswers, setUserAnswers] = useState<IUserAnswer[]>([])
   const [birthDate, setBirthDate] = useState<Date | undefined>()
-  const questions = getQuestionsByType(selectedPet)
-  const question = questions[currentQuestion]
-  const isQuestionsPassed = currentQuestion >= questions.length;
-  const key = () => {
+
+  const petToHuman = useMemo(() => getPetToHuman(selectedPet, userAnswers), [selectedPet, userAnswers])
+  const isQuestionsPassed = selectedPet && currentQuestion >= questionsByType[selectedPet].length;
+
+  const step = useMemo(() => {
+    if (isQuestionsPassed && !birthDate) return 'age-selector'
+    if (isQuestionsPassed && birthDate) return 'age-view'
     if (selectedPet) return `${selectedPet}-${currentQuestion}`
-    if (isQuestionsPassed) return 'age-selector'
     return 'pet-selector';
-  }
+  }, [selectedPet, currentQuestion, isQuestionsPassed, birthDate])
 
   const setAnswerOnQuestion = (userAnswer: IUserAnswer) => {
     setUserAnswers([...userAnswers, userAnswer])
-    setCurrentQuestion(currentQuestion + 1)
+    setCurrentQuestion(prev => prev + 1)
   }
 
   const resetState = () => {
@@ -47,7 +50,7 @@ const Home = () => {
     }
 
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1)
+      setCurrentQuestion(prev => prev - 1)
       setUserAnswers(userAnswers.filter((_, i) => userAnswers.length - 1 !== i))
       setBirthDate(undefined)
       return
@@ -58,51 +61,46 @@ const Home = () => {
     }
   }
 
-  const getPetToHuman = (): TPetToHuman[] => {
-    switch (selectedPet) {
-      case 'cat': return catYearsToHuman
-      case 'dog': {
-        const selectedDog = (userAnswers.find(elem => elem.question === EQuestionTypes.dogSize)?.answer ?? '1') as TDogKeys
-        return dogYearsToHuman[selectedDog]
-      }
-      case 'hamster': return hamsterYearsToHuman;
-      case 'rabbit': return rabbitYearsToHuman;
-      default: return []
-    }
-  }
-
-  const renderQuestions = () => {
-    if (!selectedPet) return <PetSelector onClick={(type) => setSelectedPet(type)} />;
-    if (isQuestionsPassed) {
-      if (!birthDate) {
-        return <AgeSelector
+  const renderSteps = () => {
+    switch (step) {
+      case 'pet-selector': return (
+        <PetSelector
+          onClick={(type) => setSelectedPet(type)}
+        />
+      )
+      case 'age-selector': return (
+        <AgeSelector
           answers={userAnswers}
           petType={selectedPet}
           onSelect={setBirthDate}
-          petToHuman={getPetToHuman()}
+          petToHuman={petToHuman}
         />
-      }
-
-      if (birthDate) {
-        return <AgeView
+      )
+      case 'age-view': return (
+        <AgeView
           birthDate={birthDate}
           userAnswers={userAnswers}
-          petToHuman={getPetToHuman()}
+          petToHuman={petToHuman}
         />
-      }
+      )
+      default: return <Question
+        type={selectedPet}
+        current={currentQuestion}
+        onSelect={setAnswerOnQuestion}
+      />
     }
-
-    return <Question question={question} onSelect={setAnswerOnQuestion} />
   }
+
 
   return (
     <>
       <Header />
-      <Main key={key()} {...animation.switchFadeWithSlide()}>
+      <Main key={step} {...animation.switchFadeWithSlide()}>
         {selectedPet && <BackButton onClick={back} isLastStage={!!birthDate} />}
-        {renderQuestions()}
+        {renderSteps()}
       </Main>
       <Footer />
+      <Notifications />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderTitle, LanguageSelect } from '..'
+import { HeaderTitle, LanguageSelect } from './components'
 import * as s from './Header.styled';
 import config from '@/config/config';
 import Image from 'next/image';

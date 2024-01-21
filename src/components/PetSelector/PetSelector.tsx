@@ -1,9 +1,10 @@
 import React from 'react'
-import { Block, BlockTitle, PetCard } from '..'
+import { Block, BlockTitle } from '..'
 import * as s from './PetSelector.styled';
 import { pets } from '@/data/pets';
 import { TPetType } from '@/types/pet.types';
 import { useTranslation } from 'next-i18next';
+import { PetCard } from './components';
 
 type TPetSelectorProps = {
   onClick: (pet: TPetType) => void

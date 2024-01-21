@@ -1,3 +1,4 @@
+import { EPetType, TPetType } from "@/types/pet.types";
 import { EQuestionTypes, IAnswer, IQuestion } from "@/types/question.types";
 
 export const YesAnswer: IAnswer = {
@@ -55,3 +56,10 @@ export const hamsterQuestions: IQuestion[] = [
 export const rabbitQuestions: IQuestion[] = [
   ...commonQuestions
 ]
+
+export const questionsByType: Record<TPetType, IQuestion[]> = {
+  [EPetType.cat]: catQuestions,
+  [EPetType.dog]: dogQuestions,
+  [EPetType.hamster]: hamsterQuestions,
+  [EPetType.rabbit]: rabbitQuestions
+}

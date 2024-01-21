@@ -1,7 +1,7 @@
 import { device } from "@/styles/sizes";
 import styled from "styled-components";
 
-export const AgeInputWrapper = styled.div`
+export const AgeInputWrapper = styled.section`
   margin-top: 24px;
   width: calc(100% - 16px - 16px);
   max-width: 450px;
@@ -10,27 +10,8 @@ export const AgeInputWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const AgeInputField = styled.input`
-  border: 0;
-  width: 350px;
-  height: 100%;
-  padding: 16px 24px;
-  border-radius: 16px;
-  font-size: 18px;
-  text-align: center;
-  font-family: 'Montserrat',sans-serif;
-  font-size: 1rem;
-  align-self: center;
-
-  @media ${device.mobile} {
-    width: 100%:
-  }
-`
-
 export const Range = styled.input`
-  width: 350px;
-  align-self: center;
-  margin: 24px 0 0 0;
+  width: 100%;
   cursor: pointer;
   -webkit-appearance: none;
   &::-webkit-slider-runnable-track {
@@ -113,5 +94,36 @@ export const Range = styled.input`
 
   @media ${device.mobile} {
     width: 100%:
+  }
+`
+
+export const RangeWrapper = styled.div`
+  width: 350px;
+  align-self: center;
+  margin: 24px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+`
+
+export const AgeCell = styled.div`
+  color: ${({ theme }) => theme.colors.dark};
+`
+
+export const AgeRow = styled.div`
+  align-self: center;
+  position: relative;
+  width: 240px;
+  height: 90px;
+  
+  & > :nth-child(1) {
+    position: absolute;
+    left: 0;
+  }
+
+  & > :nth-child(2) {
+    position: absolute;
+    right: 0;
   }
 `

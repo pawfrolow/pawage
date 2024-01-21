@@ -37,6 +37,12 @@ export const Input: FC<IInputProps> = ({ input, onConfirm }) => {
     onConfirm(value)
   }
 
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+      handleConfirm()
+    }
+  }
+
   return (
     <s.InputWrapper>
       <s.InputFieldWrapper>
@@ -45,6 +51,7 @@ export const Input: FC<IInputProps> = ({ input, onConfirm }) => {
           onChange={onChange}
           type={input.type ?? 'text'}
           placeholder={t(input.placeholder)}
+          onKeyDown={onKeyDown}
         />
         {error && <s.Error>{t('questions.input.notEmpty')}</s.Error>}
       </s.InputFieldWrapper>

@@ -1,78 +1,54 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { AgeCard, Block, BlockTitle, Icons } from '..'
+import React, { useMemo, useRef } from 'react'
+import { BlockTitle, Icons } from '..'
 import { useTranslation } from 'next-i18next'
 import html2canvas from 'html2canvas'
 import { calculate, share } from '@/utils'
-import { useInterval } from '@/hooks'
 import * as s from './AgeView.styled'
-import { getAnswer, num2str, unitToSeconds } from '@/utils'
-import { units } from '@/data/common'
-import { TUnits } from '@/types/common.types'
-import config from '@/config/config'
+import { getAnswer } from '@/utils'
 import { EQuestionTypes, IUserAnswer } from '@/types/question.types'
 import { TPetToHuman } from '@/types/pet.types'
+import dayjs from 'dayjs'
+import { useNotificationsContext } from '@/context'
+import { AgeRow, TableAge } from './components'
 
 type TAgeViewProps = {
-  birthDate: Date,
+  birthDate: Date | undefined,
   userAnswers: IUserAnswer[],
   petToHuman: TPetToHuman[]
 }
 
 export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers, petToHuman }) => {
-  const { speed, age: calculatedAge } = useMemo(() => calculate(birthDate, petToHuman), [birthDate, petToHuman])
-  const [age, setAge] = useState(calculatedAge);
+  const { createNotification } = useNotificationsContext()
+  const { speed, age: calculatedAge } = useMemo(
+    () => calculate(birthDate ?? dayjs().toDate(), petToHuman),
+    [birthDate, petToHuman]
+  )
   const ageViewRef = useRef(null)
-
   const { t } = useTranslation();
+
   const petName = getAnswer(userAnswers, EQuestionTypes.petName)
-
-  useInterval(() => {
-    setAge(prev => prev + 1)
-  }, speed)
-
-  const getFormattedDate = (): Record<TUnits, number> => {
-    let calculatedAge = age;
-    const dates: Record<TUnits, number> = {
-      years: 0,
-      months: 0,
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0
-    };
-
-    units.forEach(((unit) => {
-      const diff = Math.abs(config.currentDate.diff(config.currentDate.subtract(calculatedAge, 'seconds'), unit))
-      dates[unit] = diff
-      if (unit !== 'seconds') {
-        calculatedAge -= unitToSeconds(dates[unit], unit)
-      }
-    }))
-
-    return dates
-  }
 
   const handleShare = () => {
     if (ageViewRef.current) {
       html2canvas(ageViewRef.current).then(canvas => {
         share(canvas, t('utils.share.text'))
+        if (!('share' in navigator)) {
+          createNotification(t('AgeView.copied'))
+        }
       });
     }
   }
 
-  const dates = getFormattedDate()
-
   return (
-    <s.BlockWrapper ref={ageViewRef}>
-      <BlockTitle>{`${t('AgeView.Title.start')} ${petName ?? ''}${t('AgeView.Title')}`}</BlockTitle>
-      <s.AgeRow>
-        {units.map((unit) => <AgeCard
-          key={unit}
-          count={dates[unit]}
-          unit={num2str(dates[unit], [1, 2, 3].map(num => t(`units.forms.${unit}.${num}`)))}
+    <s.BlockWrapper >
+      <s.AgeViewScreen ref={ageViewRef}>
+        <BlockTitle>{`${t('AgeView.Title.start')} ${petName ?? ''}${t('AgeView.Title')}`}</BlockTitle>
+        <AgeRow
+          speed={speed}
+          age={calculatedAge}
         />
-        )}
-      </s.AgeRow>
+      </s.AgeViewScreen>
+      <TableAge petToHuman={petToHuman} />
       <s.ButtonShare onClick={handleShare}>
         <Icons.Share size={24} />
       </s.ButtonShare>

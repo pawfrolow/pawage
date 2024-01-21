@@ -1,4 +1,11 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
+
+export const SectionControls = styled(motion.section)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const SubmitButton = styled.button`
   width: 350px;
@@ -96,3 +103,57 @@ export const CalendarWrapper = styled.section`
     }
   }
 `;
+
+export const ButtonRow = styled.section`
+  display: flex;
+  margin-bottom: 16px;
+  position: relative;
+  width: 350px;
+`
+
+export const ButtonType = styled(motion.button) <{ selected: boolean }>`
+  flex: 1;
+  font-size: 18px;
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.primary};
+  padding: 8px 16px;
+  color: ${({ theme }) => theme.colors.primary};
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+
+  ${({ selected, theme }) => selected && `
+    color: ${theme.colors.white};
+  `}
+
+  &:nth-child(1) {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  &:nth-child(2) {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+`
+
+export const Indicator = styled(motion.div) <{ type: 'calendar' | 'input' }>`
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: ${({ theme }) => theme.colors.primary};
+  z-index: -1;
+
+  ${({ type }) => type === 'calendar' ? `
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  ` : `
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  `}
+`

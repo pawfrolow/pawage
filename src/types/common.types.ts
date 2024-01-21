@@ -10,3 +10,5 @@ export type TChildrenProps = {
 export type TUnits = 'years' | 'months' | 'days' | 'hours' | 'minutes' | 'seconds'
 
 export type TUnintsObject = Record<TUnits, string[]>
+
+export type TNullable<T> = T | null

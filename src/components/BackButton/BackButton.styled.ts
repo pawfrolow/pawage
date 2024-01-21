@@ -9,14 +9,13 @@ export const ButtonBack = styled.button`
   margin-left: 16px;
   margin-top: 16px;
 
-  transform: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 
   &:hover {
     opacity: 0.8;
   }
 
   span {
-    
     margin-right: 8px;
   }
 `

@@ -52,5 +52,5 @@ export const AgeUnit = styled.div`
   margin-top: 8px;
   text-align: center;
   width: 100%;
-  font-weight: bold;
+  font-weight: 500;
 `

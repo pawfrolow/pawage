@@ -5,7 +5,7 @@ export const pets: TPet = {
     type: EPetType.cat,
     title: 'pets.cat',
     icon: 'cat.png',
-    maxAge: 43,
+    maxAge: 30,
   },
   [EPetType.dog]: {
     type: EPetType.dog,
