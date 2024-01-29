@@ -6,18 +6,20 @@ import { calculate, share } from '@/utils'
 import * as s from './AgeView.styled'
 import { getAnswer } from '@/utils'
 import { EQuestionTypes, IUserAnswer } from '@/types/question.types'
-import { TPetToHuman } from '@/types/pet.types'
+import { TPetToHuman, TPetType } from '@/types/pet.types'
 import dayjs from 'dayjs'
 import { useNotificationsContext } from '@/context'
-import { AgeRow, TableAge } from './components'
+import { AgeRow, FactsViewer, TableAge } from './components'
+import { TNullable } from '@/types/common.types'
 
 type TAgeViewProps = {
   birthDate: Date | undefined,
   userAnswers: IUserAnswer[],
-  petToHuman: TPetToHuman[]
+  petToHuman: TPetToHuman[],
+  type: TNullable<TPetType>
 }
 
-export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers, petToHuman }) => {
+export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers, petToHuman, type }) => {
   const { createNotification } = useNotificationsContext()
   const { speed, age: calculatedAge } = useMemo(
     () => calculate(birthDate ?? dayjs().toDate(), petToHuman),
@@ -48,6 +50,7 @@ export const AgeView: React.FC<TAgeViewProps> = ({ birthDate, userAnswers, petTo
           age={calculatedAge}
         />
       </s.AgeViewScreen>
+      {type && <FactsViewer type={type} />}
       <TableAge petToHuman={petToHuman} />
       <s.ButtonShare onClick={handleShare}>
         <Icons.Share size={24} />

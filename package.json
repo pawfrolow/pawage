@@ -1,11 +1,11 @@
 {
     "name": "pawage",
-    "version": "0.7.0",
+    "version": "0.8.0",
     "private": true,
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p 3001",
         "lint": "next lint",
         "version-select": "version-select",
         "prepare": "husky install"
