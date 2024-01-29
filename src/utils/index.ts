@@ -50,3 +50,19 @@ export const generateId = (mask = 'xxxxxxxxxx', map = '0123456789abcdef') => {
   const length = map.length;
   return mask.replace(/x/g, () => map[Math.floor((Math.random() * length))]);
 }
+
+export function randomiseArray<T>(array: T[]): T[] {
+  let buffer = [],
+    start;
+
+  for (let i = array.length; i >= array.length && i > 0; i--) {
+    start = Math.floor(Math.random() * array.length);
+    buffer.push(array.splice(start, 1)[0]);
+  }
+
+  return buffer;
+}
+
+export function getRandomArbitrary(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min) + min);
+}

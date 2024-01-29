@@ -81,6 +81,7 @@ const Home = () => {
           birthDate={birthDate}
           userAnswers={userAnswers}
           petToHuman={petToHuman}
+          type={selectedPet}
         />
       )
       default: return <Question
