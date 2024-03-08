@@ -1,11 +1,11 @@
 import React from 'react'
 import * as s from './Question.styled'
-import { IUserAnswer } from '@/types/question.types'
+import { IUserAnswer } from 'types/question.types'
 import { Answer, Block, BlockSubtitle, BlockTitle, Input } from '..'
-import { useTranslation } from 'next-i18next'
-import { TPetType } from '@/types/pet.types'
-import { questionsByType } from '@/data/questions'
-import { TNullable } from '@/types/common.types'
+import { useTranslation } from 'react-i18next';
+import { TPetType } from 'types/pet.types'
+import { questionsByType } from 'data/questions'
+import { TNullable } from 'types/common.types'
 
 type TQuestionProps = {
   type: TNullable<TPetType>,

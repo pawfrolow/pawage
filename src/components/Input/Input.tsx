@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react'
 import * as s from './Input.styled'
 import { Answer } from '..'
-import { IInput } from '@/types/question.types'
-import { useTranslation } from 'next-i18next';
+import { IInput } from 'types/question.types'
+import { useTranslation } from 'react-i18next';;
 
 interface IInputProps {
   input: IInput,

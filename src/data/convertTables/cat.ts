@@ -1,4 +1,4 @@
-import { EPetType, TPetToHuman } from "@/types/pet.types";
+import { EPetType, TPetToHuman } from "types/pet.types";
 import { pets } from "../pets";
 
 export const catYearsToHuman: TPetToHuman[] = [

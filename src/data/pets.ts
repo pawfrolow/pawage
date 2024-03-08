@@ -1,4 +1,4 @@
-import { EPetType, TPet } from "@/types/pet.types";
+import { EPetType, TPet } from "types/pet.types";
 
 export const pets: TPet = {
   [EPetType.cat]: {

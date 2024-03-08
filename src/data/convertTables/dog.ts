@@ -1,4 +1,4 @@
-import { EPetType, TDogKeys, TPetToHuman } from "@/types/pet.types";
+import { EPetType, TDogKeys, TPetToHuman } from "types/pet.types";
 import { pets } from "../pets";
 
 const firstThree: TPetToHuman[] = [

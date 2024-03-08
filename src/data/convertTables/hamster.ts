@@ -1,4 +1,4 @@
-import { TPetToHuman } from "@/types/pet.types";
+import { TPetToHuman } from "types/pet.types";
 
 export const hamsterYearsToHuman: TPetToHuman[] = [
   { pet: +(1 / 12).toFixed(3), human: 14 },

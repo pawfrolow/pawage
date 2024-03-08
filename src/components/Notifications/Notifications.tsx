@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as s from './Notifications.styled'
-import { useNotificationsContext } from '@/context/notifications.context'
+import { useNotificationsContext } from 'context/notifications.context'
 import { Notification } from './components'
 
 export const Notifications = () => {

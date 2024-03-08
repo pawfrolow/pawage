@@ -1,6 +1,6 @@
 import React from 'react'
 import * as s from './BackButton.styled'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next';
 
 type TBackButtonProps = {
   isLastStage: boolean,

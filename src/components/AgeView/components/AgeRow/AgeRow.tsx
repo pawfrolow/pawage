@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react'
 import * as s from './AgeRow.styled'
-import { units } from '@/data/common'
-import { num2str, unitToSeconds } from '@/utils'
-import { useTranslation } from 'next-i18next'
-import { TUnits } from '@/types/common.types'
-import config from '@/config/config'
-import { useInterval } from '@/hooks'
-import { AgeCard } from '@/components'
+import { units } from 'data/common'
+import { num2str, unitToSeconds } from 'utils'
+import { useTranslation } from 'react-i18next';
+import { TUnits } from 'types/common.types'
+import config from 'config/config'
+import { useInterval } from 'hooks'
+import { AgeCard } from 'components'
 
 type TAgeRowProps = {
   age: number,

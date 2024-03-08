@@ -1,4 +1,4 @@
-import { IAnimationOptions } from "@/types/animation.types"
+import { IAnimationOptions } from "types/animation.types"
 
 export const slideFromLeft = (options?: IAnimationOptions) => {
   return {

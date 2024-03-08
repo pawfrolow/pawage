@@ -1,5 +1,5 @@
-import { EPetType, TPetType } from "@/types/pet.types";
-import { EQuestionTypes, IAnswer, IQuestion } from "@/types/question.types";
+import { EPetType, TPetType } from "types/pet.types";
+import { EQuestionTypes, IAnswer, IQuestion } from "types/question.types";
 
 export const YesAnswer: IAnswer = {
   title: 'questions.common.answers.yes',

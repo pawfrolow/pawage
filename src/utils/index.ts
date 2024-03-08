@@ -1,7 +1,7 @@
 import dayjs, { UnitTypeLong } from "dayjs";
-import { IUserAnswer, TQuestionType } from "@/types/question.types";
-import { TUnits } from "@/types/common.types";
-import config from "@/config/config";
+import { IUserAnswer, TQuestionType } from "types/question.types";
+import { TUnits } from "types/common.types";
+import config from "config/config";
 
 export * as animation from './animation';
 export { calculate } from './calculate'

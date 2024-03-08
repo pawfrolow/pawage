@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import * as s from './AgeInput.styled';
-import config from '@/config/config';
-import { num2str } from '@/utils';
+import config from 'config/config';
+import { num2str } from 'utils';
 import { useTranslation } from 'react-i18next';
-import { AgeCard } from '@/components';
+import { AgeCard } from 'components';
 
 type TAgeInputProps = {
   maxAge: number,

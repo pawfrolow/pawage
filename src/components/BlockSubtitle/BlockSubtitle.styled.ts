@@ -1,4 +1,4 @@
-import { device } from "@/styles/sizes";
+import { device } from "styles/sizes";
 import styled from "styled-components";
 
 export const BlockSubtitleWrapper = styled.h4`

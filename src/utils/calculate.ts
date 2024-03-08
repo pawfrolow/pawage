@@ -1,4 +1,4 @@
-import { TPetToHuman } from "@/types/pet.types"
+import { TPetToHuman } from "types/pet.types"
 import { dateToUnitFromNow, unitToSeconds } from ".";
 
 const convertToSeconds = (item: TPetToHuman): TPetToHuman => {

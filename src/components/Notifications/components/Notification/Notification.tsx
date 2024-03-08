@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react'
 import * as s from './Notification.styled'
-import { useTimeout } from '@/hooks'
-import { animation } from '@/utils'
-import { useNotificationsContext } from '@/context'
-import { INotification } from '@/types/notifications.types'
+import { useTimeout } from 'hooks'
+import { animation } from 'utils'
+import { useNotificationsContext } from 'context'
+import { INotification } from 'types/notifications.types'
 
 interface INotificationProps {
   notification: INotification

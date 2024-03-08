@@ -1,16 +1,16 @@
 import React, { useMemo, useRef } from 'react'
 import { BlockTitle, Icons } from '..'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'react-i18next';
 import html2canvas from 'html2canvas'
-import { calculate, share } from '@/utils'
+import { calculate, share } from 'utils'
 import * as s from './AgeView.styled'
-import { getAnswer } from '@/utils'
-import { EQuestionTypes, IUserAnswer } from '@/types/question.types'
-import { TPetToHuman, TPetType } from '@/types/pet.types'
+import { getAnswer } from 'utils'
+import { EQuestionTypes, IUserAnswer } from 'types/question.types'
+import { TPetToHuman, TPetType } from 'types/pet.types'
 import dayjs from 'dayjs'
-import { useNotificationsContext } from '@/context'
+import { useNotificationsContext } from 'context'
 import { AgeRow, FactsViewer, TableAge } from './components'
-import { TNullable } from '@/types/common.types'
+import { TNullable } from 'types/common.types'
 
 type TAgeViewProps = {
   birthDate: Date | undefined,

@@ -1,22 +1,21 @@
-import { useRouter } from 'next/router'
-import { useTranslation } from 'next-i18next'
-import { facts } from '@/data/facts'
-import { useInterval } from '@/hooks'
-import { TPetType } from '@/types/pet.types'
-import { animation, getRandomArbitrary, randomiseArray } from '@/utils'
+import { useTranslation } from 'react-i18next';
+import { facts } from 'data/facts'
+import { useInterval } from 'hooks'
+import { TPetType } from 'types/pet.types'
+import { animation, getRandomArbitrary, randomiseArray } from 'utils'
 import React, { FC, useMemo, useState } from 'react'
 import * as s from './FactsViewer.styled'
-import { ELanguages } from '@/types/languages.types'
+import { ELanguages } from 'types/languages.types'
 
 interface IFactsViewerProps {
   type: TPetType
 }
 
 export const FactsViewer: FC<IFactsViewerProps> = ({ type }) => {
-  const router = useRouter()
-  const locale = router.locale as `${ELanguages}`
-  const { t } = useTranslation();
-
+  // const router = useRouter()
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language as `${ELanguages}`
+  
   const factsArray = useMemo(() => randomiseArray(facts[locale].filter(f => f.type.includes(type))), [locale, type])
   const [current, setCurrent] = useState(0)
 

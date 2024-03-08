@@ -1,4 +1,4 @@
-import { ELanguages, ILanguage } from "@/types/languages.types";
+import { ELanguages, ILanguage } from "types/languages.types";
 
 export const languages: ILanguage[] = [
   { value: ELanguages.ru, label: 'Russian' },

@@ -1,7 +1,7 @@
-import { TDogKeys, TPetToHuman, TPetType } from "@/types/pet.types"
-import { EQuestionTypes, IUserAnswer } from "@/types/question.types"
+import { TDogKeys, TPetToHuman, TPetType } from "types/pet.types"
+import { EQuestionTypes, IUserAnswer } from "types/question.types"
 import { catYearsToHuman, dogYearsToHuman, hamsterYearsToHuman, rabbitYearsToHuman } from "."
-import { TNullable } from "@/types/common.types"
+import { TNullable } from "types/common.types"
 
 export const getPetToHuman = (type: TNullable<TPetType>, userAnswers: IUserAnswer[]): TPetToHuman[] => {
   switch (type) {

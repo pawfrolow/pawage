@@ -1,8 +1,7 @@
 import React from 'react'
 import * as s from './PetCard.styled'
-import Image from 'next/image'
-import { TPetInfo, TPetType } from '@/types/pet.types'
-import { animation } from '@/utils'
+import { TPetInfo, TPetType } from 'types/pet.types'
+import { animation } from 'utils'
 
 type TPetCardProps = {
   pet: TPetInfo,
@@ -15,7 +14,7 @@ export const PetCard: React.FC<TPetCardProps> = ({ pet, onClick }) => {
       {...animation.scaleOnHover()}
       onClick={() => !pet.inDev && onClick(pet.type)}
     >
-      <Image src={`/assets/pets/${pet.icon}`} alt={`${pet.title} icon`} width={48} height={48} />
+      <img src={`/assets/pets/${pet.icon}`} alt={`${pet.title} icon`} width={48} height={48} />
       {pet.inDev && <s.ComingSoon>Soon</s.ComingSoon>}
     </s.Card>
   )

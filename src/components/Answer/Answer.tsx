@@ -1,8 +1,8 @@
 import React from 'react'
 import * as s from './Answer.styled';
-import { IAnswer } from '@/types/question.types';
-import { animation } from '@/utils';
-import { useTranslation } from 'next-i18next';
+import { IAnswer } from 'types/question.types';
+import { animation } from 'utils';
+import { useTranslation } from 'react-i18next';;
 
 type TAnswerProps = {
   answer: IAnswer,

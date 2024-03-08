@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import * as s from './TableAge.styled'
-import { TPetToHuman } from '@/types/pet.types'
-import { num2str } from '@/utils'
+import { TPetToHuman } from 'types/pet.types'
+import { num2str } from 'utils'
 import { useTranslation } from 'react-i18next'
 
 interface ITableAgeProps {

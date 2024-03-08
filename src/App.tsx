@@ -1,17 +1,16 @@
-import { AgeSelector, AgeView, BackButton, Footer, Header, Main, Notifications, PetSelector, Question } from '@/components'
-import { TPetType } from '@/types/pet.types'
-import { IUserAnswer } from '@/types/question.types';
-import { animation } from '@/utils';
-import React, { useMemo, useState } from 'react'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { AgeSelector, AgeView, BackButton, Footer, Header, Main, Notifications, PetSelector, Question } from 'components'
+import { TPetType } from 'types/pet.types'
+import { IUserAnswer } from 'types/question.types';
+import { animation } from 'utils';
+import { useMemo, useState } from 'react'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
-import { getPetToHuman } from '@/data/convertTables';
-import { questionsByType } from '@/data/questions';
+import { getPetToHuman } from 'data/convertTables';
+import { questionsByType } from 'data/questions';
 
 dayjs.extend(duration);
 
-const Home = () => {
+const App = () => {
   const [selectedPet, setSelectedPet] = useState<TPetType | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [userAnswers, setUserAnswers] = useState<IUserAnswer[]>([])
@@ -106,15 +105,4 @@ const Home = () => {
   )
 }
 
-export async function getStaticProps({ locale }: any) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        'common',
-      ])),
-      // Will be passed to the page component as props
-    },
-  }
-}
-
-export default Home
+export default App

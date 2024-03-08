@@ -3,15 +3,14 @@ import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 import * as s from './AgeSelector.styled'
 import { Block, BlockTitle } from '..';
-import { EQuestionTypes, IUserAnswer } from '@/types/question.types';
-import { TPetToHuman, TPetType } from '@/types/pet.types';
-import { animation, checkAnswer } from '@/utils';
-import { useTranslation } from 'next-i18next';
-import { pets } from '@/data/pets';
-import { useRouter } from 'next/router';
-import config from '@/config/config';
-import { TNullable } from '@/types/common.types';
-import { AgeInput } from './components';
+import { EQuestionTypes, IUserAnswer } from 'types/question.types';
+import { TPetToHuman, TPetType } from 'types/pet.types';
+import { animation, checkAnswer } from 'utils';
+import { useTranslation } from 'react-i18next';
+import { pets } from 'data/pets';
+import config from 'config/config';
+import { TNullable } from 'types/common.types';
+import { AgeInput } from './components';;
 
 type TAgeSelector = {
   answers: IUserAnswer[],
@@ -21,13 +20,12 @@ type TAgeSelector = {
 }
 
 export const AgeSelector: React.FC<TAgeSelector> = ({ answers, petType, onSelect, petToHuman }) => {
-  const { locale } = useRouter()
   const [birthDate, setBirthDate] = useState<Date | undefined>()
 
   const [type, setType] = useState<'calendar' | 'input'>(
     checkAnswer(answers, EQuestionTypes.birthDateKnown, 'yes') ? 'calendar' : 'input'
   )
-  const { t } = useTranslation();
+  const { t, i18n: { language: locale } } = useTranslation();
 
   if (!petType) return null
 
