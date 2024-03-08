@@ -12,7 +12,8 @@ export const LanguageSelect = () => {
   const [selectedOption, setSelectedOption] = useState<SingleValue<ILanguage>>();
 
   useEffect(() => {
-    setSelectedOption(languages.find(lang => lang.value === (i18n.language || 'ru')))
+    const locale = i18n.language?.replace(/-.{1,}/g, '') ?? 'ru'
+    setSelectedOption(languages.find(lang => lang.value === locale))
   }, [i18n.language])
 
   const handleChange = (value: SingleValue<ILanguage>) => {
