@@ -36,7 +36,7 @@ p {
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body, #__next {
+html, body, #root {
   overflow-x: hidden;
 }
 
@@ -44,7 +44,7 @@ html {
   scroll-behavior: smooth;
 }
 
-#__next {
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;

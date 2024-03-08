@@ -12,10 +12,8 @@ export const LanguageSelect = () => {
   const [selectedOption, setSelectedOption] = useState<SingleValue<ILanguage>>();
 
   useEffect(() => {
-    const { language: locale } = i18n;
-    setSelectedOption(languages.find(lang => lang.value === (locale || 'ru')))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    setSelectedOption(languages.find(lang => lang.value === (i18n.language || 'ru')))
+  }, [i18n.language])
 
   const handleChange = (value: SingleValue<ILanguage>) => {
     setSelectedOption(value)
@@ -29,7 +27,8 @@ export const LanguageSelect = () => {
   return (
     <s.LanguageSelect
       {...animation.slideFromRight()}
-    ><Select
+    >
+      <Select
         value={selectedOption}
         onChange={handleChange}
         options={languages}
@@ -55,6 +54,7 @@ export const LanguageSelect = () => {
             paddingBottom: 0
           })
         }}
-      /></s.LanguageSelect>
+      />
+    </s.LanguageSelect>
   )
 }
