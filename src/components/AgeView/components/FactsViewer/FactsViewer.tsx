@@ -14,9 +14,9 @@ interface IFactsViewerProps {
 export const FactsViewer: FC<IFactsViewerProps> = ({ type }) => {
   // const router = useRouter()
   const { t, i18n } = useTranslation();
-  const locale = i18n.language as `${ELanguages}`
-  
-  const factsArray = useMemo(() => randomiseArray(facts[locale].filter(f => f.type.includes(type))), [locale, type])
+  const locale = i18n.language as `${ELanguages}` ?? 'ru'
+
+  const factsArray = useMemo(() => randomiseArray(facts[locale]?.filter(f => f.type.includes(type)) ?? []), [locale, type])
   const [current, setCurrent] = useState(0)
 
   const fact = factsArray[current]
