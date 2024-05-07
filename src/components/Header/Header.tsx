@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <s.Header>
       <HeaderTitle>
-        <img src={'/assets/header.png'} alt='Header image' height={60} width={60} style={{ marginRight: 8 }} />
+        <img src={'/assets/header.png'} alt='Header' height={60} width={60} style={{ marginRight: 8 }} />
         <span>{config.projectName}</span>
       </HeaderTitle>
       <LanguageSelect />

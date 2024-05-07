@@ -28,7 +28,6 @@ export const dogYearsToHuman: Record<TDogKeys, TPetToHuman[]> = {
     { pet: +(7 / 12).toFixed(3), human: 12 },
     { pet: 1, human: 15 },
     { pet: 1.5, human: 21 },
-    { pet: 2, human: 24 },
     ...[...Array(pets[EPetType.dog].maxAge)].filter((_, i) => i !== 0).map((_, i) => ({
       pet: i + 2,
       human: 20 + 4 * (i + 1),

@@ -1,7 +1,7 @@
 import { TNullable } from "types/common.types";
 import { INotification } from "types/notifications.types";
 import { generateId } from "utils";
-import { Dispatch, FC, ReactNode, createContext, useContext, useReducer } from "react";
+import { FC, ReactNode, createContext, useContext, useReducer } from "react";
 
 interface INotificationsProps {
   children: ReactNode

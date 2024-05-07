@@ -40,7 +40,7 @@ export const num2str = (n: number, textForms: string[]) => {
   if (n1 > 1 && n1 < 5) {
     return textForms[1];
   }
-  if (n1 == 1) {
+  if (n1 === 1) {
     return textForms[0];
   }
   return textForms[2];

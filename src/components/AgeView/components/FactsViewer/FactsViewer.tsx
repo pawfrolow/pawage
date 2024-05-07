@@ -3,7 +3,7 @@ import { facts } from 'data/facts'
 import { useInterval } from 'hooks'
 import { TPetType } from 'types/pet.types'
 import { animation, getRandomArbitrary, randomiseArray } from 'utils'
-import React, { FC, useMemo, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 import * as s from './FactsViewer.styled'
 import { ELanguages } from 'types/languages.types'
 

@@ -1,6 +1,6 @@
 {
     "name": "pawage-react-app",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "private": true,
     "dependencies": {
         "@types/node": "^16.18.82",
@@ -23,6 +23,7 @@
         "web-vitals": "^2.1.4"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "husky": "^8.0.3",
         "version-select": "^1.0.13"
     },

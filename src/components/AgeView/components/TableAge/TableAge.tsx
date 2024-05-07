@@ -30,8 +30,9 @@ export const TableAge: FC<ITableAgeProps> = ({ petToHuman }) => {
       </thead>
       <tbody>
         {petToHuman.map(({ pet, human }) => {
-          return <tr key={pet}>
-            <td>{getFormattedPetAge(pet)}</td>
+          const petAge = getFormattedPetAge(pet)
+          return <tr key={`${petAge}-${human}`}>
+            <td>{petAge}</td>
             <td>{`${human} ${num2str(human, [1, 2, 3].map(n => t(`units.forms.years.${n}`)))}`}</td>
           </tr>
         })}
