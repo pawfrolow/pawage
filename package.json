@@ -1,6 +1,6 @@
 {
     "name": "pawage-react-app",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "private": true,
     "dependencies": {
         "@types/node": "^16.18.82",
